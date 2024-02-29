@@ -1,14 +1,17 @@
 import { useState } from "react";
 
-function Form() {
-    const [form, setForm] = useState({ fullname : "", telephone : "" } );
+function Form({ contacts, setContacts }) {
+    const defaultFormValue = { fullName : "", phoneNumber : "" };
+    const [form, setForm] = useState(defaultFormValue);
 
     const onChangeInput = (event) => {
-        setForm({...form, [event.target.name] : event.target.value})
+        return setForm({...form, [event.target.name] : event.target.value})
     }
 
     const addData = (event) => {
         event.preventDefault();
+        setContacts([...contacts, form]);
+        setForm(defaultFormValue);
     }
 
     const isInvalidForm = Object.values(form).some((value) => {
@@ -21,19 +24,21 @@ function Form() {
                 <label htmlFor="fullName">Name : </label>
                 <input
                 type="text"
-                name="fullname"
-                id="fullname"
-                value={form.fullname}
+                name="fullName"
+                id="fullName"
+                value={form.fullName}
                 onChange={onChangeInput}
                 autoComplete="off" 
+
                 /><br />
-                <label htmlFor="telephone">Phone Number : </label>
+
+                <label htmlFor="phoneNumber">Phone Number : </label>
                 <input
-                name="telephone"
-                id="telephone"
-                value={form.telephone}
+                name="phoneNumber"
+                id="phoneNumber"
+                value={form.phoneNumber}
                 onChange={onChangeInput}
-                autoComplete="on"
+                autoComplete="off"
                 /><br />
                 <input type="submit" value="Add Contact!" disabled={isInvalidForm}/>
             </form>
