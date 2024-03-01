@@ -19,9 +19,9 @@ function Form({ contacts, setContacts }) {
     })
 
     return (
-        <div>
+        <div className="user-form">
             <form onSubmit={addData}>
-                <label htmlFor="fullName">Name : </label>
+                <label htmlFor="fullName">Name</label>
                 <input
                 type="text"
                 name="fullName"
@@ -29,17 +29,16 @@ function Form({ contacts, setContacts }) {
                 value={form.fullName}
                 onChange={onChangeInput}
                 autoComplete="off" 
-
-                /><br />
-
-                <label htmlFor="phoneNumber">Phone Number : </label>
+                />
+                <label htmlFor="phoneNumber">Phone Number</label>
                 <input
+                type="number"
                 name="phoneNumber"
                 id="phoneNumber"
                 value={form.phoneNumber}
                 onChange={onChangeInput}
                 autoComplete="off"
-                /><br />
+                />
                 <input type="submit" value="Add Contact!" disabled={isInvalidForm}/>
             </form>
         </div>

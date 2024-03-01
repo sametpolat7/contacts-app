@@ -10,7 +10,7 @@ function Contacts() {
         ]);
 
     return (
-        <div id='contacts'>
+        <div className='contacts'>
             <Form
             contacts = {contacts}
             setContacts = {setContacts}

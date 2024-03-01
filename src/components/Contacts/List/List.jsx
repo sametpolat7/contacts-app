@@ -11,27 +11,29 @@ function List({ contacts }) {
     });
 
     return (
-        <div>
-            <h1>Contacts List</h1>
-            <input
-            value = {searchText}
-            onChange = {(event) => {
-                setSearchText(event.target.value)
-            }}
-            ></input>
-            <ul>
-            {
-                filteredList.map((person, index) => {
-                    return (
-                    <li key={index}>
-                        {person.fullName}
-                        <br />
-                        {person.phoneNumber}
-                    </li>
-                    )
-                })
-            }
-            </ul>
+        <div className="contact-list">
+            <div className="phone-output">
+                <input
+                value = {searchText}
+                placeholder="Search"
+                onChange = {(event) => {
+                    setSearchText(event.target.value)
+                }}
+                ></input>
+                <ul>
+                {
+                    filteredList.map((person, index) => {
+                        return (
+                        <li key={index}>
+                            <span className="name">{person.fullName}</span>
+                            <br />
+                            {person.phoneNumber}
+                        </li>
+                        )
+                    })
+                }
+                </ul>
+            </div>
         </div>
     )
 }
